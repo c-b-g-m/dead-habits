@@ -16,7 +16,7 @@ export function CaseFile({ onNext }: CaseFileProps) {
     <div className="min-h-screen bg-[#0A1A0E] relative">
       <ScanLine />
 
-      <div className="max-w-4xl mx-auto px-8 py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-20">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -33,7 +33,7 @@ export function CaseFile({ onNext }: CaseFileProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative bg-[#e5e9db] p-12 shadow-2xl"
+          className="relative bg-[#e5e9db] p-6 sm:p-12 shadow-2xl"
           style={{ color: '#1d2e20' }}
         >
           {/* Classified stamp */}

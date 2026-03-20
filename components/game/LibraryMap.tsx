@@ -52,8 +52,8 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
       <div className="scan-line-overlay" />
 
       <div className="flex min-h-screen pt-16">
-        {/* Sidebar */}
-        <nav className="fixed left-0 top-0 h-full flex flex-col z-40 bg-[#111D14] w-[280px] border-r border-[#2A3D2C] pt-20">
+        {/* Sidebar — hidden on mobile, fixed on desktop */}
+        <nav className="hidden lg:flex fixed left-0 top-0 h-full flex-col z-40 bg-[#111D14] w-[280px] border-r border-[#2A3D2C] pt-20">
           <div className="px-8 mb-12">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 bg-[#192B1C] border border-[#c8f000]/20 flex items-center justify-center">
@@ -95,9 +95,9 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
         </nav>
 
         {/* Main Canvas */}
-        <main className="ml-[280px] pt-16 min-h-screen flex">
+        <main className="lg:ml-[280px] pt-4 lg:pt-16 min-h-screen flex flex-col xl:flex-row w-full">
           {/* Center Content */}
-          <section className="flex-grow p-12 relative overflow-hidden bg-[#0A1A0E]">
+          <section className="flex-grow p-4 lg:p-12 relative overflow-hidden bg-[#0A1A0E]">
             {/* Background */}
             <div className="absolute inset-0 z-0 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A0E] via-transparent to-[#0A1A0E]" />
@@ -106,21 +106,21 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
 
             <div className="relative z-10 max-w-5xl mx-auto">
               {/* Header */}
-              <div className="mb-16 flex justify-between items-end border-b border-[#2A3D2C] pb-8">
+              <div className="mb-8 lg:mb-16 flex justify-between items-end border-b border-[#2A3D2C] pb-6 lg:pb-8">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="material-symbols-outlined text-[#c8f000]/60" style={{ fontSize: '14px' }}>auto_stories</span>
                     <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-[#c8f000]/60">Cartographic Archives</span>
                   </div>
-                  <h1 className="font-display text-5xl font-bold tracking-tighter text-[#F0EBE0] uppercase terminal-glow">
+                  <h1 className="font-display text-3xl lg:text-5xl font-bold tracking-tighter text-[#F0EBE0] uppercase terminal-glow">
                     Library Mapping
                   </h1>
                   <div className="h-px bg-gradient-to-r from-[#c8f000]/40 via-[#c8f000]/10 to-transparent mt-2" />
-                  <p className="font-body italic text-[#8A9E8A] text-xl mt-6">
+                  <p className="font-body italic text-[#8A9E8A] text-base lg:text-xl mt-4 lg:mt-6">
                     "The silent layout of Hargrove Library, reconstructed from fragmented memory."
                   </p>
                 </div>
-                <div className="flex gap-4">
+                <div className="hidden sm:flex gap-4">
                   <div className="px-5 py-2 border border-[#4A6B4C] bg-[#111D14]/80 backdrop-blur-sm flex items-center gap-3">
                     <span className="w-2 h-2 bg-[#c8f000] animate-pulse" style={{ boxShadow: '0 0 8px #c8f000' }} />
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#c8f000]">Live Sync</span>
@@ -128,10 +128,10 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                 </div>
               </div>
 
-              {/* Zone Grid */}
-              <div className="grid grid-cols-12 grid-rows-6 gap-4" style={{ height: '580px' }}>
+              {/* Zone Grid — stacked on mobile, 12-col grid on desktop */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-12 lg:grid-rows-6 lg:h-[580px]">
                 {/* Zone 1 — Large active zone */}
-                <div className="col-span-6 row-span-4">
+                <div className="md:col-span-2 lg:col-span-6 lg:row-span-4 min-h-[200px]">
                   <ZoneDoorCard
                     zone={ZONES[0]}
                     isActive={true}
@@ -143,7 +143,7 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                 </div>
 
                 {/* Zone 2 */}
-                <div className="col-span-6 row-span-3">
+                <div className="md:col-span-2 lg:col-span-6 lg:row-span-3 min-h-[160px]">
                   <ZoneDoorCard
                     zone={ZONES[1]}
                     isActive={false}
@@ -153,7 +153,7 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                 </div>
 
                 {/* Zone 3 */}
-                <div className="col-span-3 row-span-3">
+                <div className="lg:col-span-3 lg:row-span-3 min-h-[140px]">
                   <ZoneDoorCard
                     zone={ZONES[2]}
                     isActive={false}
@@ -163,7 +163,7 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                 </div>
 
                 {/* Zone 4 */}
-                <div className="col-span-3 row-span-2">
+                <div className="lg:col-span-3 lg:row-span-2 min-h-[140px]">
                   <ZoneDoorCard
                     zone={ZONES[3]}
                     isActive={false}
@@ -172,8 +172,8 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                   />
                 </div>
 
-                {/* Data stream row */}
-                <div className="col-span-6 row-span-1 border border-[#2A3D2C]/50 flex items-center justify-between px-8 bg-[#0A1A0E]/80 backdrop-blur-md">
+                {/* Data stream row — desktop only */}
+                <div className="hidden lg:flex lg:col-span-6 lg:row-span-1 border border-[#2A3D2C]/50 items-center justify-between px-8 bg-[#0A1A0E]/80 backdrop-blur-md">
                   <div className="flex gap-1.5">
                     {[30, 50, 20, 80, 40, 60, 25].map((h, i) => (
                       <div key={i} className="w-1 bg-[#c8f000]" style={{ height: `${h}%`, opacity: h / 100 }} />
@@ -194,7 +194,7 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
-                  className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#192B1C] border border-[#c8f000]/20 px-6 py-4 z-50 max-w-md"
+                  className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-[#192B1C] border border-[#c8f000]/20 px-6 py-4 z-50 max-w-sm mx-4"
                 >
                   <p className="font-mono text-xs text-[#c8f000] text-center">{lockedMessage}</p>
                 </motion.div>
@@ -202,8 +202,8 @@ export function LibraryMap({ state, onNavigate }: LibraryMapProps) {
             </AnimatePresence>
           </section>
 
-          {/* Right Panel: Field Manual */}
-          <aside className="w-[380px] bg-[#111D14] border-l border-[#2A3D2C] p-10 flex flex-col gap-10 relative flex-shrink-0">
+          {/* Right Panel: Field Manual — hidden on mobile, visible on xl */}
+          <aside className="hidden xl:flex w-[380px] bg-[#111D14] border-l border-[#2A3D2C] p-10 flex-col gap-10 relative flex-shrink-0">
             <div className="absolute top-0 right-0 w-full h-64 pointer-events-none opacity-20"
               style={{ background: 'radial-gradient(circle at top right, #c8f000, transparent 70%)' }} />
 

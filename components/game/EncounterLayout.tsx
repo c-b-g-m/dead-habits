@@ -38,7 +38,7 @@ function ZombiePortrait({ zombieId, zombieName, zombieState, voiceLines }: { zom
   }[zombieId];
 
   return (
-    <div className="lg:col-span-5 sticky top-24">
+    <div className="lg:col-span-5 lg:sticky lg:top-24">
       {/* Polaroid portrait card */}
       <div className="relative">
         {/* Paper underlay */}
@@ -99,21 +99,21 @@ export function EncounterLayout({
   children,
 }: EncounterLayoutProps) {
   return (
-    <main className="ml-64 pt-20 min-h-screen px-10 pb-20">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative">
+    <main className="lg:ml-64 pt-20 min-h-screen px-4 lg:px-10 pb-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start relative">
 
         {/* Left: Zombie Portrait */}
         <ZombiePortrait zombieId={zombieId} zombieName={zombieName} zombieState={zombieState} voiceLines={voiceLines} />
 
         {/* Right: Dossier Content */}
-        <div className="lg:col-span-7 space-y-10">
+        <div className="lg:col-span-7 space-y-8 lg:space-y-10">
           {/* Dossier paper */}
           <section
             className="relative overflow-hidden transition-transform hover:rotate-0 duration-700"
             style={{
               background: '#e5e9db',
               color: '#1d2e20',
-              padding: '3rem',
+              padding: 'clamp(1.5rem, 5vw, 3rem)',
               transform: 'rotate(-0.5deg)',
               transformOrigin: 'top right',
             }}
@@ -123,7 +123,7 @@ export function EncounterLayout({
               style={{ background: 'rgba(200,240,0,0.08)' }} />
 
             {/* Dossier header */}
-            <div className="mb-8 flex justify-between items-start">
+            <div className="mb-6 lg:mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="material-symbols-outlined text-[#1d2e20]/40" style={{ fontSize: '12px' }}>folder_shared</span>
@@ -131,11 +131,11 @@ export function EncounterLayout({
                     Dept. of Dead Habits // Dossier {String(dossierNumber).padStart(2, '0')}
                   </span>
                 </div>
-                <h2 className="font-body text-5xl font-semibold text-[#1d2e20] tracking-tight">
+                <h2 className="font-body text-3xl lg:text-5xl font-semibold text-[#1d2e20] tracking-tight">
                   Subject: {zombieName}
                 </h2>
               </div>
-              <div className="text-right">
+              <div className="text-right self-start">
                 <span className="font-mono text-[10px] border-2 border-red-900/30 px-3 py-1 uppercase text-red-900/60 font-bold inline-block"
                   style={{ transform: 'rotate(12deg)', display: 'inline-block' }}>
                   Urgent Assessment
@@ -164,7 +164,7 @@ export function EncounterLayout({
             </div>
 
             {/* Classified circular stamp */}
-            <div className="absolute bottom-12 right-12 w-28 h-28 border-4 border-red-900/20 rounded-full flex items-center justify-center pointer-events-none"
+            <div className="absolute bottom-12 right-12 w-28 h-28 border-4 border-red-900/20 rounded-full hidden sm:flex items-center justify-center pointer-events-none"
               style={{ transform: 'rotate(-12deg)' }}>
               <div className="text-center">
                 <span className="font-mono text-[10px] text-red-900/30 font-bold uppercase block">Classified</span>

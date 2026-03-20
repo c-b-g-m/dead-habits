@@ -43,8 +43,8 @@ export function EmergencyBroadcast({ onNext }: EmergencyBroadcastProps) {
       </header>
 
       <div className="flex min-h-screen pt-16">
-        {/* Sidebar */}
-        <aside className="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-[#111D14] w-[280px] border-r border-[#2A3D2C]">
+        {/* Sidebar — hidden on mobile */}
+        <aside className="hidden lg:flex fixed left-0 top-0 h-full flex-col py-8 z-40 bg-[#111D14] w-[280px] border-r border-[#2A3D2C]">
           <div className="px-6 mb-12 mt-16">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-[#192B1C] flex items-center justify-center border border-[#c8f000]/20">
@@ -87,11 +87,11 @@ export function EmergencyBroadcast({ onNext }: EmergencyBroadcastProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 ml-[280px] relative overflow-hidden">
-          <div className="relative z-10 p-16 max-w-[900px]">
+        <main className="flex-1 lg:ml-[280px] relative overflow-hidden">
+          <div className="relative z-10 p-4 sm:p-8 lg:p-16 max-w-[900px]">
 
             {/* Hero Section */}
-            <div className="mb-24 mt-12">
+            <div className="mb-12 lg:mb-24 mt-4 lg:mt-12">
               {/* Live label */}
               <div className="inline-flex items-center gap-3 mb-6 bg-[#0A1A0E]/80 backdrop-blur-sm px-3 py-1.5 border border-[#c8f000]/20">
                 <div className="w-2 h-2 rounded-full bg-[#c8f000] animate-pulse" />
@@ -188,7 +188,7 @@ export function EmergencyBroadcast({ onNext }: EmergencyBroadcastProps) {
             {/* Letter and Reference */}
             <div className="pt-16 flex flex-col md:flex-row gap-16">
               {/* Dr. Hayes letter — parchment */}
-              <div className="flex-1 bg-[#F5F0E8] p-12 relative overflow-hidden shadow-2xl">
+              <div className="flex-1 bg-[#F5F0E8] p-6 lg:p-12 relative overflow-hidden shadow-2xl">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
                   <span className="material-symbols-outlined text-[#2A1F0A]" style={{ fontSize: '300px' }}>school</span>
                 </div>

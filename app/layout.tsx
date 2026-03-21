@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Rajdhani, Crimson_Pro, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const rajdhani = Rajdhani({
@@ -52,6 +53,7 @@ export default function RootLayout({
         className={`${rajdhani.variable} ${crimsonPro.variable} ${jetbrainsMono.variable} antialiased bg-[#0A1A0E] text-[#F0EBE0]`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
